@@ -9,12 +9,12 @@
 #include "include/cef_app.h"
 
 #include "SDL.h"
-#include "SDL_image.h"
+#include <SDL2/SDL_image.h>
 
 #include <iostream>
 
-const int INITIAL_WINDOW_WIDTH = 1000;
-const int INITIAL_WINDOW_HEIGHT = 1000;
+const int INITIAL_WINDOW_WIDTH = 320; //1000;
+const int INITIAL_WINDOW_HEIGHT = 240; //1000;
 
 /** Shorthand to clean up objects if created */
 void cleanUp(SDL_Window* window = nullptr, SDL_Renderer* renderer = nullptr, bool cefInitialized = false) {
@@ -64,7 +64,7 @@ int main(int argc, char *argv[]) {
     }
 
     // Create the SDL object to render stuff with
-    auto renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+    auto renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_SOFTWARE); //SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
     if (!renderer) {
         std::cerr << "SDL could not create renderer! SDL_Error: " << SDL_GetError() << std::endl;
         cleanUp(window);
@@ -100,7 +100,7 @@ int main(int argc, char *argv[]) {
 
     CefBrowserSettings browserSettings;
     browserSettings.windowless_frame_rate = 60;
-    browserSettings.background_color = 0; // allows for transparency
+    //browserSettings.background_color = 0; // allows for transparency
 
     // Create the browser object to interpret the HTML
     std::string htmlFile = "file://" + std::string(SDL_GetBasePath()) + "sdl_cef_html.html";
@@ -137,7 +137,7 @@ int main(int argc, char *argv[]) {
         SDL_RenderClear(renderer);
 
         // draw the background then the HTML
-        background.render();
+        //background.render();
         renderHandler->render();
 
         // Update screen

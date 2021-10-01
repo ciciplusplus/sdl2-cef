@@ -1,7 +1,7 @@
 
 #include "stupid_background.h"
 
-#include <SDL_image.h>
+#include <SDL2/SDL_image.h>
 
 StupidBackground::StupidBackground(int count, int viewWidth, int viewHeight, SDL_Renderer *renderer)
         : count(count),

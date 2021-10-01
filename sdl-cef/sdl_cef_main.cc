@@ -1092,7 +1092,7 @@ int main(int argc, char *argv[]) {
                                                                       browserClient,
                                                                       htmlFile,
                                                                       browserSettings,
-                                                                      nullptr);
+                                                                      nullptr, nullptr);
 
 
     g_signal_connect (G_OBJECT (gtk), "key_press_event", G_CALLBACK (on_key_press), &browser);

@@ -33,9 +33,10 @@ public:
     }
 
     bool OnProcessMessageReceived(CefRefPtr<CefBrowser> browser,
+                                  CefRefPtr<CefFrame> frame,
                                   CefProcessId source_process,
                                   CefRefPtr<CefProcessMessage> message) override {
-        return messageRouterRenderSide->OnProcessMessageReceived(browser, source_process, message);
+        return messageRouterRenderSide->OnProcessMessageReceived(browser, frame, source_process, message);
     }
 
 private:

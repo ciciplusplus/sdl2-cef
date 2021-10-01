@@ -135,7 +135,7 @@ bool SdlCefBrowserClient::OnBeforeBrowse(CefRefPtr<CefBrowser> browser,
     return false;
 }
 
-CefRefPtr<CefResourceHandler> SdlCefBrowserClient::GetResourceHandler(
+/*CefRefPtr<CefResourceHandler> SdlCefBrowserClient::GetResourceHandler(
         CefRefPtr<CefBrowser> browser,
         CefRefPtr<CefFrame> frame,
         CefRefPtr<CefRequest> request) {
@@ -152,7 +152,7 @@ CefRefPtr<CefResourceHandler> SdlCefBrowserClient::GetResourceHandler(
 //        return shared::GetResourceHandler(resource_path);
 
     return nullptr;
-}
+}*/
 
 void SdlCefBrowserClient::OnRenderProcessTerminated(CefRefPtr<CefBrowser> browser,
                                                     TerminationStatus status) {
@@ -163,10 +163,11 @@ void SdlCefBrowserClient::OnRenderProcessTerminated(CefRefPtr<CefBrowser> browse
 }
 
 bool SdlCefBrowserClient::OnProcessMessageReceived(CefRefPtr<CefBrowser> browser,
+                                                   CefRefPtr<CefFrame> frame,
                                                    CefProcessId source_process,
                                                    CefRefPtr<CefProcessMessage> message) {
     CEF_REQUIRE_UI_THREAD();
 
-    return messageRouterBrowserSide->OnProcessMessageReceived(browser, source_process, message);
+    return messageRouterBrowserSide->OnProcessMessageReceived(browser, frame, source_process, message);
 }
 

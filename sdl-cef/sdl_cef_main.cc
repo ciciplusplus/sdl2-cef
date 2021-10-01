@@ -99,11 +99,11 @@ int main(int argc, char *argv[]) {
     window_info.SetAsWindowless(kNullWindowHandle);
 
     CefBrowserSettings browserSettings;
-    browserSettings.windowless_frame_rate = 60;
+    browserSettings.windowless_frame_rate = 30;
     //browserSettings.background_color = 0; // allows for transparency
 
     // Create the browser object to interpret the HTML
-    std::string htmlFile = "file://" + std::string(SDL_GetBasePath()) + "sdl_cef_html.html";
+    std::string htmlFile = "http://localhost:5000/";
     CefRefPtr<CefBrowser> browser = CefBrowserHost::CreateBrowserSync(window_info,
                                                                       browserClient,
                                                                       htmlFile,
